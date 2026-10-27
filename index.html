@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Smart Study Planner - organize study tasks and track your progress.">
+  <title>Smart Study Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon">✦</span> StudySmart</a>
+    <span class="today" id="todayLabel"></span>
+  </header>
+
+  <main class="container">
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">YOUR PERSONAL STUDY SPACE</p>
+        <h1>Make today <span>count.</span></h1>
+        <p class="subtitle">Plan your work, focus on what matters, and celebrate your progress.</p>
+      </div>
+      <div class="welcome-art" aria-hidden="true">📚</div>
+    </section>
+
+    <section class="stats" aria-label="Study statistics">
+      <article class="stat-card"><span class="stat-icon purple">☷</span><div><p>Total tasks</p><strong id="totalCount">0</strong></div></article>
+      <article class="stat-card"><span class="stat-icon green">✓</span><div><p>Completed</p><strong id="completedCount">0</strong></div></article>
+      <article class="stat-card"><span class="stat-icon orange">◷</span><div><p>Remaining</p><strong id="remainingCount">0</strong></div></article>
+      <article class="stat-card progress-card"><div class="progress-heading"><p>Daily progress</p><strong id="progressPercent">0%</strong></div><div class="progress-track"><span id="progressBar"></span></div><small>Keep going — every step counts!</small></article>
+    </section>
+
+    <div class="workspace">
+      <section class="panel task-panel">
+        <div class="section-heading">
+          <div><p class="eyebrow">STAY ORGANIZED</p><h2>My study tasks</h2></div>
+          <span class="task-pill" id="taskPill">0 tasks</span>
+        </div>
+
+        <form id="taskForm" class="task-form">
+          <label for="taskInput">Task name</label>
+          <input id="taskInput" type="text" maxlength="120" placeholder="e.g. Revise algebra chapter" required>
+          <div class="form-row">
+            <div class="field"><label for="subjectInput">Subject</label><input id="subjectInput" type="text" maxlength="50" placeholder="e.g. Mathematics"></div>
+            <div class="field"><label for="dateInput">Due date</label><input id="dateInput" type="date"></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label for="timeInput">Study time</label><input id="timeInput" type="time"></div>
+            <div class="field"><label for="priorityInput">Priority</label><select id="priorityInput"><option value="Medium">Medium</option><option value="High">High</option><option value="Low">Low</option></select></div>
+          </div>
+          <button class="primary-button" type="submit"><span>＋</span> Add study task</button>
+        </form>
+
+        <div class="list-toolbar">
+          <h3>Task list</h3>
+          <select id="filterSelect" aria-label="Filter tasks"><option value="all">All tasks</option><option value="active">To do</option><option value="completed">Completed</option></select>
+        </div>
+        <div id="taskList" class="task-list"></div>
+        <div id="emptyState" class="empty-state"><div>📝</div><h3>Your study plan starts here</h3><p>Add your first task using the form above.</p></div>
+        <button id="clearCompleted" class="text-button" type="button" hidden>Clear completed tasks</button>
+      </section>
+
+      <aside class="side-column">
+        <section class="panel focus-panel">
+          <p class="eyebrow">FOCUS SESSION</p>
+          <h2>Pomodoro timer</h2>
+          <p class="muted">Focus for 25 minutes, then take a short break.</p>
+          <div class="timer-circle"><div><strong id="timerDisplay">25:00</strong><span id="timerMode">FOCUS TIME</span></div></div>
+          <div class="timer-actions"><button id="timerStart" class="primary-button" type="button">▶ Start</button><button id="timerReset" class="secondary-button" type="button">↺ Reset</button></div>
+          <button id="timerModeToggle" class="text-button" type="button">Switch to 5-minute break</button>
+        </section>
+
+        <section class="panel tips-panel">
+          <div class="tip-icon">💡</div>
+          <h2>Study tip</h2>
+          <p id="tipText">Break big topics into small tasks. A clear next step makes starting easier.</p>
+          <button id="nextTip" class="text-button" type="button">Show another tip →</button>
+        </section>
+
+        <section class="panel date-panel">
+          <p class="eyebrow">YOUR ROUTINE</p>
+          <h2>Plan a little, achieve a lot.</h2>
+          <p class="muted">Set realistic goals, take breaks, and review what you learned at the end of the day.</p>
+        </section>
+      </aside>
+    </div>
+    <footer>Made for your learning journey <span>♥</span> <small>Tasks are saved in this browser on your device.</small></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
